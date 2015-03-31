@@ -41,7 +41,12 @@ function saveCache($cacheFile, $content)
 		{
 			mkdir(dirname($cacheFile), 0775, true);
 		}
-		if($i>=9) {die("Не удалось получить блокировку\n");}
+		
+		if($i>=9)
+		{
+			$modx->log(MODX_LOG_LEVEL_WARN,'Не удалось получить блокировку');
+			return '';
+		}
 	}
 	if($locked){
 		$res=fwrite($fhCache, $content);
