@@ -2,11 +2,11 @@
 
 Place package manually to ``/core/components/getactualcache/``
 
-Create static snippet, assign to file ``/core/components/getactualcache/getactualcache.snippet.php``
+Create static snippet ``getBlockCache``, assign to file ``/core/components/getactualcache/getactualcache.snippet.php``
 
 Usage
 ```
-[[!getActualCache? &element=`share`]]
+[[!getBlockCache? &element=`share`]]
 ```
 
 Default
