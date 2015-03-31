@@ -29,13 +29,22 @@ function getCache($cacheFile){
 
 function saveCache($cacheFile, $content)
 {
-	// Открытие текстовых файлов
-	$fhCache = fopen($cacheFile, "w");
-	$locked = flock($fhCache, LOCK_EX | LOCK_NB);
-	if(!$locked) {
-		echo 'Не удалось получить блокировку';
-		exit(-1);
+	for($i=0; $i<10; $i++)
+	{
+		// Открытие текстовых файлов
+		$fhCache = fopen($cacheFile, "w");
+		$locked = flock($fhCache, LOCK_EX | LOCK_NB);
+		if($locked){
+			break;
+		}
+		else
+		{
+			mkdir(dirname($cacheFile), 0775, true);
+		}
+		if($i>=9) {die("Не удалось получить блокировку\n");}
 	}
-    $res=fwrite($fhCache, $content);
+	if($locked){
+		$res=fwrite($fhCache, $content);
+	}
     return $res;
 }
