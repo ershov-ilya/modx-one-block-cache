@@ -6,10 +6,10 @@ $props = array(
 $props = array_merge($props, $scriptProperties);
 
 $base_path = MODX_CORE_PATH.'components/getactualcache/';
-$cache_file = $base_path.'cache/'.$props['class'].'-'.$props['element'];
-$cache_file .= '.cache.php';
-
 require_once($base_path.'getactualcache.php');
+
+$cache_file = MODX_CORE_PATH.'cache/getactualcache/'.$props['class'].'-'.$props['element'];
+$cache_file .= '.cache.php';
 
 $cache_file_actual = isActual($cache_file, $props);
 if($_GET['re']==$modx->resource->get('id')) $cache_file_actual = false;

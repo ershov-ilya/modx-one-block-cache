@@ -51,6 +51,7 @@ function saveCache($cacheFile, $content)
 	if($locked){
 		$res=fwrite($filePtr, $content);
 		flock($filePtr, LOCK_UN); // отпираем файл
+		fclose($filePtr);
 	}
     return $res;
 }
