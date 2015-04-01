@@ -12,6 +12,7 @@ $cache_file .= '.cache.php';
 require_once($base_path.'getactualcache.php');
 
 $cache_file_actual = isActual($cache_file, $props);
+if($_GET['re']==$modx->resource->get('id')) $cache_file_actual = false;
 if($cache_file_actual) return getCache($cache_file);
 
 $content='';

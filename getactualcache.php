@@ -3,7 +3,7 @@
 function isActual($cacheFile, $props=array())
 {
 	$config=array(
-		'age'	=>	86400
+		'age'	=>	14400
 	);
 	$config=array_merge($config, $props);
 	$cacheAgeLimit=$config['age'];
@@ -32,8 +32,8 @@ function saveCache($cacheFile, $content)
 	for($i=0; $i<10; $i++)
 	{
 		// Открытие текстовых файлов
-		$fhCache = fopen($cacheFile, "w");
-		$locked = flock($fhCache, LOCK_EX | LOCK_NB);
+		$filePtr = fopen($cacheFile, "w");
+		$locked = flock($filePtr, LOCK_EX | LOCK_NB);
 		if($locked){
 			break;
 		}
@@ -49,7 +49,8 @@ function saveCache($cacheFile, $content)
 		}
 	}
 	if($locked){
-		$res=fwrite($fhCache, $content);
+		$res=fwrite($filePtr, $content);
+		flock($filePtr, LOCK_UN); // отпираем файл
 	}
     return $res;
 }
