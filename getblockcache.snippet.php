@@ -7,7 +7,7 @@ $props = array_merge($props, $scriptProperties);
 $resourceID=$modx->resource->get('id');
 
 $base_path = MODX_CORE_PATH.'components/getblockcache/';
-require_once($base_path.'getactualcache.php');
+require_once($base_path.'getblockcache.php');
 
 $cache_file = MODX_CORE_PATH.'cache/getblockcache/'.$props['class'].'&element='.$props['element'].'&res_id='.$resourceID;
 $cache_file .= '.cache.php';
