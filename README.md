@@ -1,8 +1,8 @@
 # modx-one-block-cache
 
-Place package manually to ``/core/components/getactualcache/``
+Place package manually to ``/core/components/getblockcache/``
 
-Create static snippet ``getBlockCache``, assign to file ``/core/components/getactualcache/getactualcache.snippet.php``
+Create static snippet ``getBlockCache``, assign to file ``/core/components/getblockcache/getblockcache.snippet.php``
 
 Usage
 ```
@@ -14,6 +14,6 @@ Default
 $props = array(
 	'class'		=> 'modChunk',
 	'element'	=> 'test',
-	'age'		=> '86400' //seconds
+	'age'		=> '14400' //seconds
 );
 ```

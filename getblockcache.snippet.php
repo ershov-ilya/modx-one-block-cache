@@ -4,15 +4,16 @@ $props = array(
 	'element'	=> 'test',
 );
 $props = array_merge($props, $scriptProperties);
+$resourceID=$modx->resource->get('id');
 
-$base_path = MODX_CORE_PATH.'components/getactualcache/';
+$base_path = MODX_CORE_PATH.'components/getblockcache/';
 require_once($base_path.'getactualcache.php');
 
-$cache_file = MODX_CORE_PATH.'cache/getactualcache/'.$props['class'].'-'.$props['element'];
+$cache_file = MODX_CORE_PATH.'cache/getblockcache/'.$props['class'].'&element='.$props['element'].'&res_id='.$resourceID;
 $cache_file .= '.cache.php';
 
 $cache_file_actual = isActual($cache_file, $props);
-if($_GET['re']==$modx->resource->get('id')) $cache_file_actual = false;
+if($_GET['re']==$resourceID) $cache_file_actual = false;
 if($cache_file_actual) return getCache($cache_file);
 
 $content='';
@@ -20,6 +21,10 @@ switch($props['class'])
 {
 	case 'modChunk':
 	$content=$modx->getChunk($props['element'], $props);
+	saveCache($cache_file, $content);
+	break;
+	case 'modSnippet':
+	$content=$modx->runSnippet($props['element'], $props);
 	saveCache($cache_file, $content);
 	break;
 }
