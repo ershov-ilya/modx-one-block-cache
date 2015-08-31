@@ -31,5 +31,5 @@ getBlockCache passes all parametrs to the called chunk/snippet:
 
 can be cached with:
 ```
-[[!getBlockCache? &element=`share` &header=`Chunk content header` &footer=`Chunk content header`]]
+[[!getBlockCache? &element=`share` &age=`3600` &header=`Chunk content header` &footer=`Chunk content header`]]
 ```
