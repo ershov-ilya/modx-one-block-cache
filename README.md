@@ -26,10 +26,10 @@ $props = array(
 
 getBlockCache passes all parametrs to the called chunk/snippet:
 ```
-[[$share? &header=`Chunk content header` &footer=`Chunk content header`]]
+[[$share? &param1=`param1 value` &param2=`param2 value`]]
 ```
 
 can be cached with:
 ```
-[[!getBlockCache? &element=`share` &age=`3600` &header=`Chunk content header` &footer=`Chunk content header`]]
+[[!getBlockCache? &element=`share` &age=`3600` &param1=`param1 value` &param2=`param2 value`]]
 ```
