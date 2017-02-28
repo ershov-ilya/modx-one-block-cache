@@ -17,9 +17,9 @@ Usage
 Default
 ```
 $props = array(
-	'class'		=> 'modChunk',
+	'class'		=> 'modChunk', // default=modChunk || modSnippet
 	'element'	=> 'test',
-	'age'		=> '14400' //seconds
+	'age'		=> '14400' //seconds 14400 = 4 hours
 );
 ```
 
